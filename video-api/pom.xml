@@ -6,6 +6,7 @@
         <groupId>top.yinjinbiao</groupId>
         <artifactId>dependencies</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../dependencies/pom.xml</relativePath>
     </parent>
 
     <artifactId>video-api</artifactId>
@@ -46,12 +47,33 @@
         </dependency>
         <!-- Environment End -->
 
-
-
     </dependencies>
 
     <build>
-
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>4.1.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

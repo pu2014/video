@@ -19,7 +19,7 @@
 
     <properties>
         <!-- Environment Settings -->
-        <mysql.version>5.1.40</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
 
         <!-- Spring Settings -->
         <spring-boot-tk-mybatis.version>2.1.5</spring-boot-tk-mybatis.version>
