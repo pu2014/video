@@ -24,9 +24,13 @@
         <!-- Spring Settings -->
         <spring-boot-tk-mybatis.version>2.1.5</spring-boot-tk-mybatis.version>
         <spring-boot-pagehelper.version>1.2.13</spring-boot-pagehelper.version>
+        <spring-boot-starter-actuator.version>2.9.2</spring-boot-starter-actuator.version>
 
         <!-- Swagger2 Begin -->
         <swagger2.version>2.9.2</swagger2.version>
+
+        <micrometer-registry-prometheus.version>1.3.5</micrometer-registry-prometheus.version>
+
     </properties>
 
     <dependencyManagement>
@@ -42,6 +46,11 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${spring-boot-pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-boot-starter-actuator.version}</version>
             </dependency>
             <!-- Spring Boot End -->
 
@@ -66,6 +75,12 @@
                 <scope>runtime</scope>
             </dependency>
             <!-- Environment End -->
+
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${micrometer-registry-prometheus.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
