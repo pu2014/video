@@ -1,8 +1,8 @@
-package top.yinjinbiao.video.domain;
+package top.yinjinbiao.video.test.domain;
 
 import javax.persistence.*;
 
-@Table(name = "video..test")
+@Table(name = "test")
 public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
