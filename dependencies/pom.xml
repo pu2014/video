@@ -24,13 +24,11 @@
         <!-- Spring Settings -->
         <spring-boot-tk-mybatis.version>2.1.5</spring-boot-tk-mybatis.version>
         <spring-boot-pagehelper.version>1.2.13</spring-boot-pagehelper.version>
-        <spring-boot-starter-actuator.version>2.9.2</spring-boot-starter-actuator.version>
-
         <!-- Swagger2 Begin -->
         <swagger2.version>2.9.2</swagger2.version>
 
-        <micrometer-registry-prometheus.version>1.3.5</micrometer-registry-prometheus.version>
-
+        <spring-security-oauth2.version>2.2.5.RELEASE</spring-security-oauth2.version>
+        <lombok.version>1.18.12</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -53,6 +51,14 @@
                 <version>${spring-boot-starter-actuator.version}</version>
             </dependency>
             <!-- Spring Boot End -->
+
+            <!-- spring-security-oauth2 Begin-->
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+            <!-- spring-security-oauth2 End-->
 
             <!-- Swagger2 Begin -->
             <dependency>
@@ -77,9 +83,10 @@
             <!-- Environment End -->
 
             <dependency>
-                <groupId>io.micrometer</groupId>
-                <artifactId>micrometer-registry-prometheus</artifactId>
-                <version>${micrometer-registry-prometheus.version}</version>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>

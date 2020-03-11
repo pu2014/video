@@ -1,4 +1,4 @@
-package tk.mybatis.mapper;
+package top.yinjinbiao.video.common;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

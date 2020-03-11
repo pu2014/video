@@ -32,17 +32,14 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>
         <!-- Spring Boot End -->
 
-        <!-- HikariCP -->
+        <!-- HikariCP Begin-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency>
+        <!-- HikariCP End-->
 
         <!-- Environment Begin -->
         <dependency>
@@ -62,10 +59,18 @@
         </dependency>
         <!-- Swagger2 End -->
 
+        <!-- spring-security-oauth2 Begin-->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
         </dependency>
+        <!-- spring-security-oauth2 End-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
 
     </dependencies>
 

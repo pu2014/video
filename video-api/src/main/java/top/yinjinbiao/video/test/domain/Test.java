@@ -1,7 +1,10 @@
 package top.yinjinbiao.video.test.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Table(name = "test")
 public class Test {
     @Id
@@ -14,59 +17,4 @@ public class Test {
 
     private String sex;
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return age
-     */
-    public Integer getAge() {
-        return age;
-    }
-
-    /**
-     * @param age
-     */
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    /**
-     * @return sex
-     */
-    public String getSex() {
-        return sex;
-    }
-
-    /**
-     * @param sex
-     */
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 }
