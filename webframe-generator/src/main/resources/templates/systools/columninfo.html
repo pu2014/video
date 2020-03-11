@@ -1,0 +1,61 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">  
+<head th:include="/common/easyui :: commonHeader('用户管理')">  
+</head>  
+<body>  
+	<table id="grid">
+	</table>
+	
+	<div th:include="/common/common :: commonJS"></div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	function loadForm(tableName){
+		$('#grid').datagrid({
+			url : "/sysGenerate/queryColumn",	 
+			method : 'post',
+			singleSelect : true,
+	        fit : true,
+	        pagination : true,
+	        rownumbers : true,
+	        queryParams: {
+	    		tableName: tableName
+	    	},
+		    columns:[[{
+				field : 'columnName',
+				title : '列名',
+				halign : 'left',
+				width : 150
+			}, {
+				field : 'columnType',
+				title : '类型',
+				halign : 'left',
+				width : 150
+			}, {
+				field : 'isPk',
+				title : '是否主键',
+				halign : 'left',
+				width : 100,
+				formatter: function(value,row,index){
+					if(value == 'Y'){
+						return '是'
+					}else{
+						return '否'
+					}
+					
+				}
+			}, {
+				field : 'columnComment',
+				title : '备注',
+				halign : 'left',
+				width : 250
+			}]],
+			onDblClickRow : function(rowIndex,rowData){
+				
+			}
+		});
+	}
+	/* ]]> */
+	</script>
+</body>
+</html>

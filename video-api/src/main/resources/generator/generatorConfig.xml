@@ -13,7 +13,7 @@
 
         <!-- 配置 tk.mybatis 插件 -->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="top.yinjinbiao.video.common.MyMapper"/>
+            <property name="mappers" value="top.yinjinbiao.video.common.mapper.MyMapper"/>
         </plugin>
 
         <!-- 配置数据库连接 -->

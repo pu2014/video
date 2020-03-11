@@ -20,9 +20,3 @@ spring:
 mybatis:
   type-aliases-package: top.yinjinbiao.video.*.domain
   mapper-locations: classpath:mapper/*.xml
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: prometheus
