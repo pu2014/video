@@ -20,6 +20,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private SysUserService sysUserService;
+
     @Autowired
     private SysPermissionService sysPermissionService;
 
