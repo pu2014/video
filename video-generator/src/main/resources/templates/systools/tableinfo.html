@@ -1,0 +1,157 @@
+<!DOCTYPE html>  
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">  
+<head th:include="/common/easyui :: commonHeader('代码生成')">  
+</head>  
+<body class="easyui-layout">  
+	<div data-options="region:'west'" style="width:52%;padding:1px;">
+		<div id="tbar">
+		表名: <input type="text" id="fuzzy" class="form-control" style="width:150px;" enterClick="query()"/>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'fa-search-plus',plain:true" onclick="query()">查询</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'fa-outdent',plain:true" onclick="generate()">代码生成</a>
+		</div>
+		<table id="grid">
+		</table>
+	</div>
+	<div data-options="region:'center'">
+		<div class="easyui-panel" title="配置信息" style="width:100%;height:100%;padding:30px 60px;">
+	        <form id="ff" method="post">
+	        	<div style="margin-bottom:20px">
+	                <input class="easyui-textbox" id="tableName" name="tableName" editable="false" style="width:100%" data-options="label:'表名:'"/>
+	            </div>
+	            <div style="margin-bottom:20px">
+	                <input class="easyui-textbox" id="diskPath" name="diskPath" style="width:100%" value="D:\generator\" data-options="label:'生成路径:',prompt:'D:\\generator\\'"/>
+	            </div>
+	            <div style="margin-bottom:20px">
+	                <input type="text" class="easyui-textbox" id="path" name="path" style="width:100%"  value="top.yinjinbiao.video" data-options="label:'包路径:',prompt:'top.yinjinbiao.video'"/>
+	            </div>
+	        </form>
+	    </div>
+	</div>
+	
+	<div th:include="/common/common :: commonJS"></div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	$(document).ready(function () {
+		$('#grid').datagrid({
+			url : "/sysGenerate/query",	 
+			method : 'post',
+			singleSelect : true,
+	        fit : true,
+	        pagination : true,
+	        rownumbers : true,
+	        toolbar:'#tbar',
+		    columns:[[{
+		    	 checkbox : true,
+	             field : 'id',
+	             width : '35'
+			},{
+				field : 'tableName',
+				title : '表名',
+				halign : 'left',
+				width : 200
+			}, {
+				field : 'tableComment',
+				title : '备注',
+				halign : 'left',
+				width : 200
+			}, {
+				field : 'createTime',
+				title : '创建时间',
+				halign : 'left',
+				width : 150
+			}, {
+				field : 'op',
+				title : '操作',
+				halign : 'left',
+				width : 80,
+				formatter: function(value,row,index){
+					return '<a style="border:1px solid #55B0FF;color:#55B0FF;" onclick=columnDetail("'+row.tableName+'")> 列信息 </a>';
+				}
+			}]],
+			onSelect : function(rowIndex, rowData){
+		    	loadConfig(rowData.tableName)
+		    },
+			onClickRow : function(rowIndex, rowData){
+		    	loadConfig(rowData.tableName)
+		    },
+			onDblClickRow : function(rowIndex,rowData){
+				
+			}
+		});
+	})
+	
+	function query(){
+		$("#grid").datagrid("load",{
+			fuzzy : $("#fuzzy").val(),
+		}); 
+	}
+	
+	function columnDetail(tableName){
+		layer.open({
+			id: 'column',
+			type: 2,
+			title: '列信息',
+		//	skin:"layui-layer-lan",
+			shadeClose: false,
+			//shade: 0.5,
+			area: ['700px','440px'],
+			maxmin: true,
+			content: '/sysGenerate/columninfo',
+			success: function (layero, index) {
+                var iframeWin = layero.find('iframe')[0].contentWindow;
+                iframeWin.loadForm(tableName);
+       		},
+		});
+	}
+	
+	function loadConfig(tableName){
+		$('#tableName').textbox('setValue',tableName);
+	}
+	
+	function generate(){
+		var tableName = $('#tableName').textbox('getValue');
+		if(tableName.length == 0){
+			msgTip("请选择表!",2);
+			return;
+		}
+		var diskPath = $('#diskPath').textbox('getValue');
+		var path = $('#path').textbox('getValue');
+		if(diskPath.length > 0){
+			var index = diskPath.length - 1;
+			var lastChar = diskPath.charAt(index);
+			if(lastChar != '\\') {
+				msgTip("生成路径格式不对!",2);
+				return;
+			} 
+		}else{
+			msgTip("生成路径不能为空!",2);
+			return;
+		}
+		
+		if(path.length == 0){
+			msgTip("包路径不能为空!",2);
+			return;
+		}
+		
+		$.ajax({
+			url : "/sysGenerate/generate",
+			type : "post",
+			data : {
+				tableName : $('#tableName').textbox('getValue'),
+				diskPath : diskPath,
+				path : path
+			},
+			dataType: 'JSON',
+			success : function(msg){
+				if(msg.success){
+					msgTip("代码生成成功!",1);
+				}
+			}
+		}); 
+	}	
+	
+	/* ]]> */
+	</script>
+</body>
+</html>

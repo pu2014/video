@@ -1,8 +1,9 @@
 package top.yinjinbiao.video.common.service;
 
-import java.util.List;
+import com.github.pagehelper.PageInfo;
+import top.yinjinbiao.video.common.domain.BaseDomain;
 
-public interface BaseService<T> {
+public interface BaseService<T extends BaseDomain> {
 
     public int save(T t);
 
@@ -12,6 +13,6 @@ public interface BaseService<T> {
 
     public int count(T t);
 
-    public List<T> page(T t);
+    public PageInfo<T> page(int pageNum, int pageSize, T t);
 
 }

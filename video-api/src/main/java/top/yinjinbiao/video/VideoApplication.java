@@ -8,7 +8,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @EnableSwagger2
 @SpringBootApplication
-@MapperScan(basePackages = "top.yinjinbiao.video.test.mapper")
+@MapperScan(basePackages = "top.yinjinbiao.video.admin.mapper")
 class VideoApplication {
     public static void main(String[] args) {
         SpringApplication.run(VideoApplication.class,args);

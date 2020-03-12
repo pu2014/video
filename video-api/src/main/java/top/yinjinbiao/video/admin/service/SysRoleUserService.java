@@ -1,4 +1,8 @@
 package top.yinjinbiao.video.admin.service;
 
-public interface SysRoleUserService {
+import top.yinjinbiao.video.admin.domain.SysRoleUser;
+import top.yinjinbiao.video.common.service.BaseService;
+
+public interface SysRoleUserService extends BaseService<SysRoleUser> {
+
 }

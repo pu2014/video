@@ -1,6 +1,6 @@
 package top.yinjinbiao.video.sso;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,9 +9,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import top.yinjinbiao.video.admin.service.impl.MyUserDetailsService;
 
 
 @Configuration
@@ -22,8 +22,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * 调用 admin 服务包下的service ，进行密码验证。
      */
-    @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    @Qualifier("MyUserDetailsServiceImpl")
+    private UserDetailsService UserDetailsService;
 
     /**
      * 密码校验，从数据库中校验密码
@@ -32,7 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(UserDetailsService).passwordEncoder(passwordEncoder());
     }
 
     /**

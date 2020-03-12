@@ -1,27 +1,26 @@
 package top.yinjinbiao.video.admin.domain;
 
 import lombok.Data;
+import top.yinjinbiao.video.common.domain.BaseDomain;
 
-import java.util.Date;
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 
+/**
+* @author yin.jinbiao
+* @date 2020-03-12
+*/
 @Data
-@Table(name = "sys_role_user")
-public class SysRoleUser {
+public class SysRoleUser extends BaseDomain implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "role_id")
-    private Long roleId;
-
-    @Column(name = "user_id")
-    private Long userId;
-
-    @Column(name = "create_time")
-    private Date createTime;
-
-    @Column(name = "create_by")
-    private Long createBy;
-
+	private Long id;	
+	private Long roleId;
+	private Long userId;
+    
 }
