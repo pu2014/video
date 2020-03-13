@@ -2,6 +2,7 @@ package top.yinjinbiao.video.admin.domain;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import top.yinjinbiao.video.common.domain.BaseDomain;
 
@@ -16,7 +17,7 @@ import java.util.Collection;
 * @date 2020-03-12
 */
 @Data
-public class SysUser extends BaseDomain implements UserDetails,Serializable {
+public class SysUser extends BaseDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,29 +27,4 @@ public class SysUser extends BaseDomain implements UserDetails,Serializable {
     private String username;
     private String loginname;
     private String password;
-
-    /**
-     * 授权信息
-     */
-    public Collection<? extends GrantedAuthority> authorities;
-
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
-
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    public boolean isEnabled() {
-        return false;
-    }
 }

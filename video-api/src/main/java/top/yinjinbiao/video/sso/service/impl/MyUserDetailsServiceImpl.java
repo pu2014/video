@@ -3,6 +3,7 @@ package top.yinjinbiao.video.sso.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,8 +44,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
         for (SysPermission sysPermission : sysPermissionList) {
             authorities.add(new SimpleGrantedAuthority(sysPermission.getCode()));
         }
-        sysUser.setAuthorities(authorities);
-        return sysUser;
+        return new User(sysUser.getUsername(),sysUser.getPassword(),authorities);
     }
 }
 
