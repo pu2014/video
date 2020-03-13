@@ -1,19 +1,19 @@
 package top.yinjinbiao.video.sso;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+
+import javax.sql.DataSource;
 
 /**
  * 配置授权服务器
@@ -25,24 +25,23 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    /**
-     * 注入authenticationManager
-     * 来支持 password grant type
-     */
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private DataSource dataSource;
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
 
     @Bean
     public TokenStore tokenStore(){
-        return new JdbcTokenStore(dataSource);
+        return new JdbcTokenStore(dataSource());
     }
 
     @Bean
     public JdbcClientDetailsService jdbcClientDetailsService(){
-        return new JdbcClientDetailsService(dataSource);
+        return new JdbcClientDetailsService(dataSource());
     }
 
     /**
@@ -57,16 +56,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         //jdbc模式
         clients.withClientDetails(jdbcClientDetailsService());
 
-    }
-
-    /**
-     * 该方法是用来配置Authorization Server
-     * endpoints的一些非安全特性的，比如token存储、token自定义、授权类型等等的
-     * 默认情况下，你不需要做任何事情，除非你需要密码授权，那么在这种情况下你需要提供一个AuthenticationManager
-     */
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);//token存储
     }
 
     /**
