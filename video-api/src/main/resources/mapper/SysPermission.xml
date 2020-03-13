@@ -14,19 +14,5 @@
         <result column="is_delete" jdbcType="TINYINT" property="delete" />
     </resultMap>
 
-    <select id="listByLoginname" parameterType="String" resultMap="BaseResultMap">
-        SELECT
-            c.*
-        FROM
-            sys_user t,
-            sys_role_user a,
-            sys_role_permission b,
-            sys_permission c
-        WHERE
-            t.id = a.user_id
-        AND a.role_id = b.role_id
-        AND b.permission_id = c.id
-    </select>
-
 
 </mapper>

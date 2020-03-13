@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.sso;
+package top.yinjinbiao.video.sso.server.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;

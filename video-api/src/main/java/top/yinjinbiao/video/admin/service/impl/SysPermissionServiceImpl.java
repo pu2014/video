@@ -12,10 +12,4 @@ import java.util.List;
 @Service
 public class SysPermissionServiceImpl extends AbstractBaseServiceImpl<SysPermission, SysPermissionMapper> implements SysPermissionService {
 
-    @Autowired
-    private SysPermissionMapper sysPermissionMapper;
-
-    public List<SysPermission> listByLoginname(String loginname) {
-        return sysPermissionMapper.listByLoginname(loginname);
-    }
 }

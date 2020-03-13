@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.sso;
+package top.yinjinbiao.video.sso.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.sso.service.impl;
+package top.yinjinbiao.video.sso.server.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import java.util.List;
 @Service
 public class MyUserDetailsServiceImpl implements UserDetailsService {
 
+    /**
+     * TODO 跨包调用
+     */
     @Autowired
     private SysUserService sysUserService;
-
-    @Autowired
-    private SysPermissionService sysPermissionService;
 
     /**
      * 根据用户名查找用户，如果用户不存在抛出异常。
@@ -40,7 +40,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
         }
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
         // 根据账号查询权限列表
-        List<SysPermission> sysPermissionList = sysPermissionService.listByLoginname(loginname);
+        List<SysPermission> sysPermissionList = sysUserService.listByLoginname(loginname);
         for (SysPermission sysPermission : sysPermissionList) {
             authorities.add(new SimpleGrantedAuthority(sysPermission.getCode()));
         }
