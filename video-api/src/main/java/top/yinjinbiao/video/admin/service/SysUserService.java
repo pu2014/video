@@ -2,11 +2,10 @@ package top.yinjinbiao.video.admin.service;
 
 import top.yinjinbiao.video.admin.domain.SysPermission;
 import top.yinjinbiao.video.admin.domain.SysUser;
-import top.yinjinbiao.video.common.service.BaseService;
 
 import java.util.List;
 
-public interface SysUserService extends BaseService<SysUser> {
+public interface SysUserService {
 
     /**
      * 根据登录名（账号）查询所有授权
@@ -14,4 +13,11 @@ public interface SysUserService extends BaseService<SysUser> {
      * @return
      */
     List<SysPermission> listByLoginname(String loginname);
+
+    /**
+     * 根据登录账号查询用户
+     * @param loginname
+     * @return
+     */
+    SysUser findByLoginname(String loginname);
 }

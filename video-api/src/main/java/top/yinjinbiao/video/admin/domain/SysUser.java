@@ -1,16 +1,9 @@
 package top.yinjinbiao.video.admin.domain;
 
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import top.yinjinbiao.video.common.domain.BaseDomain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
 * @author yin.jinbiao
@@ -20,9 +13,7 @@ import java.util.Collection;
 public class SysUser extends BaseDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;	
     private String username;
     private String loginname;
