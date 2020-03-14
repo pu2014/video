@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -66,4 +67,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         super.configure(web);
     }
 
+    /**
+     * 通过HttpSecurity实现Security的自定义过滤配置
+     *
+     * @param httpSecurity
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .requestMatchers().anyRequest()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**").permitAll();
+    }
 }

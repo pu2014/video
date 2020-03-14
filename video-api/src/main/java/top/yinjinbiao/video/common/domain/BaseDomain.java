@@ -11,9 +11,9 @@ public class BaseDomain {
 
     private Date updateTime;
 
-    private Date createBy;
+    private Long createBy;
 
-    private Date updateBy;
+    private Long updateBy;
 
     private Boolean delete;
 }

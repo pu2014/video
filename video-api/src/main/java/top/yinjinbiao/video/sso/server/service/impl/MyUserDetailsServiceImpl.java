@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import top.yinjinbiao.video.admin.domain.SysPermission;
 import top.yinjinbiao.video.admin.domain.SysUser;
-import top.yinjinbiao.video.admin.service.SysPermissionService;
 import top.yinjinbiao.video.admin.service.SysUserService;
 
 import java.util.ArrayList;

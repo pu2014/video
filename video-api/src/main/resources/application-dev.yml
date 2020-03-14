@@ -16,6 +16,14 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  redis:
+    database: 0
+    host: 118.190.101.57
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 100
 
 mybatis:
   type-aliases-package: top.yinjinbiao.video.*.domain
