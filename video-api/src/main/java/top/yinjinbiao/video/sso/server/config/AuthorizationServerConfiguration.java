@@ -6,18 +6,17 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
@@ -30,10 +29,11 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
+    @Autowired
+    private RedisConnectionFactory connectionFactory;
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
 
     @Bean
     @Primary
@@ -49,7 +49,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Bean
     public TokenStore tokenStore(){
-        return new JdbcTokenStore(dataSource());
+        return new RedisTokenStore(connectionFactory);
     }
 
     /**
@@ -79,20 +79,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         endpoints.authenticationManager(authenticationManager);
         // 存储token
         endpoints.tokenStore(tokenStore());
-    }
-
-    /**
-     * 配置授权服务器的安全，意味着实际上是/oauth/token端点。 /oauth/authorize端点也应该是安全的
-     * 默认的设置覆盖到了绝大多数需求，所以一般情况下你不需要做任何事情。
-     */
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security
-                // 开启/oauth/token_key验证端口无权限访问
-                .tokenKeyAccess("permitAll()")
-                // 开启/oauth/check_token验证端口认证权限访问
-                .checkTokenAccess("isAuthenticated()")
-                .allowFormAuthenticationForClients();
     }
 
 }
