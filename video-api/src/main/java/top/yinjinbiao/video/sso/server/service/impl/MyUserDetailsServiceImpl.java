@@ -32,9 +32,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
      * @throws UsernameNotFoundException
      */
     public UserDetails loadUserByUsername(String loginname) throws UsernameNotFoundException {
-        SysUser sysUser = new SysUser();
-        sysUser.setLoginname(loginname);
-        sysUser = sysUserService.getOne(sysUser);
+        SysUser sysUser = sysUserService.findByLoginname(loginname);
         if(sysUser == null){
             throw new UsernameNotFoundException(loginname);
         }

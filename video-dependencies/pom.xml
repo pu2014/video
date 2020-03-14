@@ -22,7 +22,7 @@
         <mysql.version>8.0.16</mysql.version>
 
         <!-- Spring Settings -->
-        <spring-boot-tk-mybatis.version>2.1.5</spring-boot-tk-mybatis.version>
+        <mybatis-spring-boot-starter.version>2.1.2</mybatis-spring-boot-starter.version>
         <spring-boot-pagehelper.version>1.2.13</spring-boot-pagehelper.version>
         <!-- Swagger2 Begin -->
         <swagger2.version>2.9.2</swagger2.version>
@@ -36,9 +36,9 @@
 
             <!-- Spring Boot Begin -->
             <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${spring-boot-tk-mybatis.version}</version>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.pagehelper</groupId>

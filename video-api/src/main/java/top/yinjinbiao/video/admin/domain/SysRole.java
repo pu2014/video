@@ -3,9 +3,6 @@ package top.yinjinbiao.video.admin.domain;
 import lombok.Data;
 import top.yinjinbiao.video.common.domain.BaseDomain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -16,9 +13,7 @@ import java.io.Serializable;
 public class SysRole extends BaseDomain implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;	
     private String name;
     private String memo;

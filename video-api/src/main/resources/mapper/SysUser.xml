@@ -29,6 +29,17 @@
             t.id = a.user_id
         AND a.role_id = b.role_id
         AND b.permission_id = c.id
+        AND t.loginname = #{loginname}
+    </select>
+
+    <select id="findByLoginname" parameterType="String" resultMap="BaseResultMap">
+        SELECT
+            t.username,t.loginname,t.password
+        FROM
+            sys_user t
+        WHERE
+            t.loginname = #{loginname}
+        AND t.is_delete = 0
     </select>
 
 </mapper>

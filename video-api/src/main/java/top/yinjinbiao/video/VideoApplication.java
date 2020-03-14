@@ -1,11 +1,11 @@
 package top.yinjinbiao.video;
 
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import tk.mybatis.spring.annotation.MapperScan;
+
 
 @EnableSwagger2
 @SpringBootApplication
