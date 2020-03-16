@@ -82,6 +82,11 @@
         </dependency>
         <!-- redis end-->
 
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+        </dependency>
+
 
     </dependencies>
 
