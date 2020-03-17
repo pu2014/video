@@ -28,3 +28,8 @@ spring:
 mybatis:
   type-aliases-package: top.yinjinbiao.video.*.domain
   mapper-locations: classpath:mapper/*.xml
+
+oss:
+  endpoint: http://oss-cn-beijing.aliyuncs.com
+  bucketName: top-yinjinbiao-video
+
