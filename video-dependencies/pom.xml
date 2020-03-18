@@ -29,7 +29,7 @@
 
         <spring-security-oauth2.version>2.2.5.RELEASE</spring-security-oauth2.version>
         <lombok.version>1.18.12</lombok.version>
-        <aliyun-sdk-oss.version>3.8.0</aliyun-sdk-oss.version>
+        <aliyun-sdk-oss.version>3.8.1</aliyun-sdk-oss.version>
     </properties>
 
     <dependencyManagement>

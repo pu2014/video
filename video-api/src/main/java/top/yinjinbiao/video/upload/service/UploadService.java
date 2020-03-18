@@ -7,10 +7,10 @@ public interface UploadService {
 
     /**
      * 文件上传
-     * @param name 文件名称
+     * @param originalFilename 文件原名称
      * @param data 文件二进制数据
      */
-    public String upload(String name,byte[] data);
+    public String upload(String originalFilename,byte[] data);
 
 
     /**
