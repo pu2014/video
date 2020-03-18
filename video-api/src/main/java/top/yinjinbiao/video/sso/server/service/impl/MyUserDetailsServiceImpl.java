@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import top.yinjinbiao.video.admin.domain.SysPermission;
-import top.yinjinbiao.video.admin.domain.SysUser;
+import top.yinjinbiao.video.domain.SysPermission;
+import top.yinjinbiao.video.domain.SysUser;
 import top.yinjinbiao.video.admin.service.SysUserService;
 
 import java.util.ArrayList;

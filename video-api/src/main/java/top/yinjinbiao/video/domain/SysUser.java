@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.admin.domain;
+package top.yinjinbiao.video.domain;
 
 import lombok.Data;
 import top.yinjinbiao.video.common.domain.BaseDomain;
@@ -10,12 +10,12 @@ import java.io.Serializable;
 * @date 2020-03-12
 */
 @Data
-public class SysRoleUser extends BaseDomain implements Serializable{
+public class SysUser extends BaseDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;	
-	private Long roleId;
-	private Long userId;
-    
+    private String username;
+    private String loginname;
+    private String password;
 }

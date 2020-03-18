@@ -1,8 +1,8 @@
 package top.yinjinbiao.video.admin.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import top.yinjinbiao.video.admin.domain.SysPermission;
-import top.yinjinbiao.video.admin.domain.SysUser;
+import top.yinjinbiao.video.domain.SysPermission;
+import top.yinjinbiao.video.domain.SysUser;
 
 import java.util.List;
 
