@@ -5,14 +5,14 @@ import org.apache.ibatis.session.ExecutorType;
 import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import top.yinjinbiao.video.common.interceptor.DateTimeInterceptor;
+import top.yinjinbiao.video.common.interceptor.BaseColumnInterceptor;
 
 @Configuration
 public class MybatisConfiguration {
 
     @Bean
-    public DateTimeInterceptor dateTimeInterceptor() {
-        return new DateTimeInterceptor();
+    public BaseColumnInterceptor dateTimeInterceptor() {
+        return new BaseColumnInterceptor();
     }
 
     @Bean
