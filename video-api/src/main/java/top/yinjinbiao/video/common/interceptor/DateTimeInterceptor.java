@@ -13,7 +13,7 @@ import java.util.Properties;
 
 @Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class,
         Object.class})})
-public class BaseColumnInterceptor implements Interceptor {
+public class DateTimeInterceptor implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
