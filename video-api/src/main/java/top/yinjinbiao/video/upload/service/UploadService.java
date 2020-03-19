@@ -18,7 +18,7 @@ public interface UploadService {
      * @param id 文件标识符
      * @return
      */
-    public String delete(String id);
+    public int delete(String id);
 
 
 }
