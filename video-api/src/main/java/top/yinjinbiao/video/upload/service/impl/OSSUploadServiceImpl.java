@@ -2,12 +2,9 @@ package top.yinjinbiao.video.upload.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import top.yinjinbiao.video.domain.SysFile;
-import top.yinjinbiao.video.upload.mapper.SysFileMapper;
 import top.yinjinbiao.video.upload.service.UploadService;
 
 import java.io.ByteArrayInputStream;
@@ -21,8 +18,6 @@ import java.util.UUID;
 @Transactional(readOnly = true)
 public class OSSUploadServiceImpl implements UploadService {
 
-
-    // oss 参数信息
     @Value("${oss.endpoint}")
     private String endpoint;
 
@@ -37,10 +32,6 @@ public class OSSUploadServiceImpl implements UploadService {
 
     @Value("${oss.secret.accessKeySecret}")
     private String accessKeySecret;
-
-
-    @Autowired
-    private SysFileMapper sysFileMapper;
 
     @Override
     @Transactional(readOnly = false)
@@ -58,21 +49,20 @@ public class OSSUploadServiceImpl implements UploadService {
         ossClient.putObject(bucketName, key, is);
         ossClient.shutdown();
 
-        // 上传文件信息保存到业务表
-        String ossDownloadUrl = bucketEndpoint + key;
-        SysFile sysFile = new SysFile(null,originalFilename, key, ossDownloadUrl);
-        sysFileMapper.insert(sysFile);
-        return ossDownloadUrl;
+        // TODO 将文件信息保存至 sys_file 表
+
+        return bucketEndpoint + key;
     }
 
     @Override
     @Transactional(readOnly = false)
-    public int delete(String key) {
+    public String delete(String key) {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         ossClient.deleteObject(bucketName, key);
         ossClient.shutdown();
 
-        // 删除业务表中的文件记录
-        return sysFileMapper.deleteByKey(key);
+        // TODO 删除 sys_file 表中信息
+
+        return key;
     }
 }

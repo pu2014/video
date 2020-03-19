@@ -1,25 +1,19 @@
 package top.yinjinbiao.video.common.domain;
 
 import lombok.Data;
-import top.yinjinbiao.video.common.annotation.*;
 
 import java.util.Date;
 
 @Data
 public class BaseDomain {
 
-    @CreateTime
-    protected Date createTime;
+    private Date createTime;
 
-    @UpdateTime
-    protected Date updateTime;
+    private Date updateTime;
 
-    @CreateBy
-    protected String createBy;
+    private Long createBy;
 
-    @UpdateBy
-    protected String updateBy;
+    private Long updateBy;
 
-    @Delete
-    protected Boolean delete;
+    private Boolean delete;
 }

@@ -8,9 +8,9 @@
         <result column="url" jdbcType="CHAR" property="url" />
         <result column="code" jdbcType="CHAR" property="code" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-        <result column="create_by" jdbcType="CHAR" property="createBy" />
+        <result column="create_by" jdbcType="BIGINT" property="createBy" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-        <result column="update_by" jdbcType="CHAR" property="updateBy" />
+        <result column="update_by" jdbcType="BIGINT" property="updateBy" />
         <result column="is_delete" jdbcType="TINYINT" property="delete" />
     </resultMap>
 

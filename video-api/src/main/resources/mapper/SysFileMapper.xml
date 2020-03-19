@@ -6,11 +6,10 @@
     <!--@Table sys_file-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="CHAR" property="name" />
-    <result column="key" jdbcType="CHAR" property="key" />
     <result column="url" jdbcType="CHAR" property="url" />
-    <result column="create_by" jdbcType="CHAR" property="createBy" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_by" jdbcType="CHAR" property="updateBy" />
+    <result column="update_by" jdbcType="INTEGER" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="is_delete" jdbcType="BOOLEAN" property="delete" />
   </resultMap>
@@ -32,12 +31,12 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.yinjinbiao.video.domain.SysFile" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into sys_file (`name`, `key`, url, create_by,
+    insert into sys_file (`name`, url, create_by, 
       create_time, update_by, update_time, 
       is_delete)
-    values (#{name,jdbcType=CHAR}, #{key,jdbcType=CHAR}, #{url,jdbcType=CHAR}, #{createBy,jdbcType=BIGINT},
+    values (#{name,jdbcType=CHAR}, #{url,jdbcType=CHAR}, #{createBy,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{delete,jdbcType=BOOLEAN})
+      #{isDelete,jdbcType=BOOLEAN})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.yinjinbiao.video.domain.SysFile" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -45,9 +44,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         `name`,
-      </if>
-      <if test="key != null">
-        `key`,
       </if>
       <if test="url != null">
         url,
@@ -64,16 +60,13 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="delete != null">
+      <if test="isDelete != null">
         is_delete,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
         #{name,jdbcType=CHAR},
-      </if>
-      <if test="key != null">
-        #{key,jdbcType=CHAR},
       </if>
       <if test="url != null">
         #{url,jdbcType=CHAR},
@@ -90,8 +83,8 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        #{delete,jdbcType=BOOLEAN},
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BOOLEAN},
       </if>
     </trim>
   </insert>
@@ -101,9 +94,6 @@
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=CHAR},
-      </if>
-      <if test="key != null">
-        `key` = #{key,jdbcType=CHAR},
       </if>
       <if test="url != null">
         url = #{url,jdbcType=CHAR},
@@ -120,8 +110,8 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="delete != null">
-        is_delete = #{delete,jdbcType=BOOLEAN},
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BOOLEAN},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -130,17 +120,12 @@
     <!--@mbg.generated-->
     update sys_file
     set `name` = #{name,jdbcType=CHAR},
-      `key` = #{key,jdbcType=CHAR},
       url = #{url,jdbcType=CHAR},
       create_by = #{createBy,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_delete = #{delete,jdbcType=BOOLEAN}
+      is_delete = #{isDelete,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <delete id="deleteByKey" parameterType="java.lang.String">
-    delete from sys_file
-    where `key` = #{key,jdbcType=CHAR}
-  </delete>
 </mapper>

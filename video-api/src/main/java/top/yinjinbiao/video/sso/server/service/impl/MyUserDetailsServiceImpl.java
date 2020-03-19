@@ -41,7 +41,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
         for (SysPermission sysPermission : sysPermissionList) {
             authorities.add(new SimpleGrantedAuthority(sysPermission.getCode()));
         }
-        return new User(sysUser.getLoginname(),sysUser.getPassword(),authorities);
+        return new User(sysUser.getUsername(),sysUser.getPassword(),authorities);
     }
 }
 
