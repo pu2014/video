@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.common;
+package top.yinjinbiao.video.common.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class Swagger2Configuration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("top.yinjinbiao.video.admin.controller"))
+                .apis(RequestHandlerSelectors.basePackage("top.yinjinbiao.video"))
                 .paths(PathSelectors.any())
                 .build();
     }

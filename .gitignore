@@ -26,4 +26,4 @@ hs_err_pid*
 
 *.iml
 
-video-api/src/main/resources/secret/
+secret
