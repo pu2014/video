@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
-public class SysFile extends BaseDomain implements Serializable {
+public class SysFile extends BaseDomain {
 
     private Long id;
 

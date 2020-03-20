@@ -18,15 +18,12 @@
     <inceptionYear>2020-Now</inceptionYear>
 
     <properties>
-        <!-- Environment Settings -->
         <mysql.version>8.0.16</mysql.version>
-
-        <!-- Spring Settings -->
         <mybatis-spring-boot-starter.version>2.1.2</mybatis-spring-boot-starter.version>
         <spring-boot-pagehelper.version>1.2.13</spring-boot-pagehelper.version>
-        <!-- Swagger2 Begin -->
         <swagger2.version>2.9.2</swagger2.version>
-
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
+        <swagger-models.version>1.5.21</swagger-models.version>
         <spring-security-oauth2.version>2.2.5.RELEASE</spring-security-oauth2.version>
         <lombok.version>1.18.12</lombok.version>
         <aliyun-sdk-oss.version>3.8.1</aliyun-sdk-oss.version>
@@ -57,6 +54,16 @@
             <!-- spring-security-oauth2 End-->
 
             <!-- Swagger2 Begin -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger-models.version}</version>
+            </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>

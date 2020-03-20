@@ -10,7 +10,7 @@ import java.io.Serializable;
 * @date 2020-03-12
 */
 @Data
-public class SysRoleUser extends BaseDomain implements Serializable{
+public class SysRoleUser extends BaseDomain {
 
 	private static final long serialVersionUID = 1L;
 
