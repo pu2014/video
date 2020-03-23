@@ -1,7 +1,5 @@
 package top.yinjinbiao.video.common.dto;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**
@@ -9,7 +7,6 @@ import java.io.Serializable;
  *
  * @param <T>
  */
-@Data
 public class ResponseResult<T> implements Serializable {
 
     //序列化接口随机id
