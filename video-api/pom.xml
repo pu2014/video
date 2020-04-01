@@ -89,7 +89,12 @@
 
         <dependency>
             <groupId>org.flowable</groupId>
-            <artifactId>flowable-spring-boot-starter</artifactId>
+            <artifactId>flowable-spring-boot-starter-process</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.flowable/flowable-ui-modeler-rest -->
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-ui-modeler-rest</artifactId>
         </dependency>
 
     </dependencies>
@@ -97,11 +102,10 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>
