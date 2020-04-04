@@ -2,10 +2,12 @@ package top.yinjinbiao.video.upload.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import liquibase.pro.packaged.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import top.yinjinbiao.video.common.properties.OSSProperties;
 import top.yinjinbiao.video.domain.SysFile;
 import top.yinjinbiao.video.upload.mapper.SysFileMapper;
 import top.yinjinbiao.video.upload.service.UploadService;
@@ -32,11 +34,8 @@ public class OSSUploadServiceImpl implements UploadService {
     @Value("${oss.bucket-endpoint}")
     private String bucketEndpoint;
 
-    @Value("${oss.secret.accessKeyId}")
-    private String accessKeyId;
-
-    @Value("${oss.secret.accessKeySecret}")
-    private String accessKeySecret;
+    @Autowired
+    private OSSProperties ossProperties;
 
 
     @Autowired
@@ -45,7 +44,7 @@ public class OSSUploadServiceImpl implements UploadService {
     @Override
     @Transactional(readOnly = false)
     public String upload(String originalFilename, byte[] data) {
-        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        OSS ossClient = new OSSClientBuilder().build(endpoint, ossProperties.getAccessKeyId(), ossProperties.getAccessKeyId());
         if (!ossClient.doesBucketExist(bucketName)) {
             ossClient.createBucket(bucketName);
         }
@@ -68,7 +67,7 @@ public class OSSUploadServiceImpl implements UploadService {
     @Override
     @Transactional(readOnly = false)
     public int delete(String key) {
-        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        OSS ossClient = new OSSClientBuilder().build(endpoint, ossProperties.getAccessKeyId(), ossProperties.getAccessKeySecret());
         ossClient.deleteObject(bucketName, key);
         ossClient.shutdown();
 

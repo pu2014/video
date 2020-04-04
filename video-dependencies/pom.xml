@@ -107,7 +107,7 @@
                 <version>${flowable.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.flowable/flowable-ui-modeler-rest -->
-            <!--<dependency>
+            <dependency>
                 <groupId>org.flowable</groupId>
                 <artifactId>flowable-ui-modeler-rest</artifactId>
                 <version>${flowable.version}</version>
@@ -125,7 +125,7 @@
                         <artifactId>log4j-jul</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>-->
+            </dependency>
 
 
 

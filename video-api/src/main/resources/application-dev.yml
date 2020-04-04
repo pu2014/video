@@ -29,8 +29,16 @@ mybatis:
   type-aliases-package: top.yinjinbiao.video.domain
   mapper-locations: classpath:mapper/*.xml
 
+
 oss:
   endpoint: http://oss-cn-beijing.aliyuncs.com
   bucketName: top-yinjinbiao-video
   bucket-endpoint: https://top-yinjinbiao-video.oss-cn-beijing.aliyuncs.com/
 
+flowable:
+  common:
+    app:
+      idm-url: http://localhost:8080/flowable-idm
+      idm-admin:
+        user: admin
+        password: test
