@@ -19,13 +19,13 @@ public class UploadController {
     private UploadService uploadService;
 
     @PostMapping("/upload")
-    public ResponseResult upload(MultipartFile file) throws IOException {
-        return new ResponseResult(HttpStatus.OK.value(),"上传成功",uploadService.upload(file.getOriginalFilename(),file.getBytes()));
+    public ResponseResult<String> upload(MultipartFile file) throws IOException {
+        return new ResponseResult<String>(HttpStatus.OK.value(),"上传成功",uploadService.upload(file.getOriginalFilename(),file.getBytes()));
     }
 
     @PostMapping("/delete")
-    public ResponseResult delete(String key) throws IOException {
-        return new ResponseResult(HttpStatus.OK.value(),"删除成功",uploadService.delete(key));
+    public ResponseResult<Integer> delete(String key) throws IOException {
+        return new ResponseResult<Integer>(HttpStatus.OK.value(),"删除成功",uploadService.delete(key));
     }
 
 

@@ -3,12 +3,19 @@ package top.yinjinbiao.video.domain;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import top.yinjinbiao.video.common.domain.BaseDomain;
 
 @Data
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper=true)//equals和hashcode方法也使用父类的属性进行重写
 public class BizArticle extends BaseDomain {
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     /**
     * 作者

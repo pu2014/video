@@ -9,7 +9,12 @@ import java.util.Date;
 @Data
 public class BaseDomain implements Serializable {
 
-    @CreateTime
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@CreateTime
     private Date createTime;
 
     @UpdateTime

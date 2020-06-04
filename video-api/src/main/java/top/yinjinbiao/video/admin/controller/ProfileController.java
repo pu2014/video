@@ -1,4 +1,4 @@
-package top.yinjinbiao.video.profile.controller;
+package top.yinjinbiao.video.admin.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
