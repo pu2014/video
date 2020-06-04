@@ -26,22 +26,22 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     /**
      * 根据用户名查找用户，如果用户不存在抛出异常。
-     * @param loginname
+     * @param username
      * @return
      * @throws UsernameNotFoundException
      */
-    public UserDetails loadUserByUsername(String loginname) throws UsernameNotFoundException {
-        SysUser sysUser = sysUserService.findByLoginname(loginname);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUser sysUser = sysUserService.findByUsername(username);
         if(sysUser == null){
-            throw new UsernameNotFoundException(loginname);
+            throw new UsernameNotFoundException(username);
         }
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
         // 根据账号查询权限列表
-        List<SysPermission> sysPermissionList = sysUserService.listByLoginname(loginname);
+        List<SysPermission> sysPermissionList = sysUserService.listByUsername(username);
         for (SysPermission sysPermission : sysPermissionList) {
             authorities.add(new SimpleGrantedAuthority(sysPermission.getCode()));
         }
-        return new User(sysUser.getLoginname(),sysUser.getPassword(),authorities);
+        return new User(sysUser.getUsername(),sysUser.getPassword(),authorities);
     }
 }
 

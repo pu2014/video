@@ -17,12 +17,12 @@ public class SysUserServiceImpl implements SysUserService {
     @Autowired
     private SysUserMapper sysUserMapper;
 
-    public List<SysPermission> listByLoginname(String loginname) {
-        return sysUserMapper.listByLoginname(loginname);
+    public List<SysPermission> listByUsername(String listByUsername) {
+        return sysUserMapper.listByUsername(listByUsername);
     }
 
     @Override
-    public SysUser findByLoginname(String loginname) {
-        return sysUserMapper.findByLoginname(loginname);
+    public SysUser findByUsername(String username) {
+        return sysUserMapper.findByUsername(username);
     }
 }

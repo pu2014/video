@@ -9,15 +9,15 @@ public interface SysUserService {
 
     /**
      * 根据登录名（账号）查询所有授权
-     * @param loginname
+     * @param username
      * @return
      */
-    List<SysPermission> listByLoginname(String loginname);
+    List<SysPermission> listByUsername(String username);
 
     /**
      * 根据登录账号查询用户
-     * @param loginname
+     * @param username
      * @return
      */
-    SysUser findByLoginname(String loginname);
+    SysUser findByUsername(String username);
 }

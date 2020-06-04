@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SysUserMapper {
 
-    List<SysPermission> listByLoginname(@Param("loginname") String loginname);
+    List<SysPermission> listByUsername(@Param("username") String username);
 
-    SysUser findByLoginname(@Param("loginname") String loginname);
+    SysUser findByUsername(@Param("username") String username);
 }

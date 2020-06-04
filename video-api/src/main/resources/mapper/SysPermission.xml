@@ -13,6 +13,15 @@
         <result column="update_by" jdbcType="CHAR" property="updateBy" />
         <result column="is_delete" jdbcType="TINYINT" property="delete" />
     </resultMap>
+    
+    <select id="list" resultType="SysPermission">
+        SELECT
+            t.*
+        FROM
+            sys_permission t
+        WHERE
+        	t.is_delete = 0
+    </select>
 
 
 </mapper>

@@ -18,6 +18,5 @@ public class SysUser extends BaseDomain {
 
 	private Long id;	
     private String username;
-    private String loginname;
     private String password;
 }

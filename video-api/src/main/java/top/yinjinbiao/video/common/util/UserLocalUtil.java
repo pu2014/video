@@ -3,22 +3,25 @@ package top.yinjinbiao.video.common.util;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
+/**
+ * @author yin.jinbiao
+ */
 public class UserLocalUtil {
 
     /**
-     * 获取当前登陆人账号
+     * 获取当前登陆人账号，如果未登录返回null。
      * @return
      */
-    public static String getCurrentLoginname(){
+    public static String getCurrentUsername(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String loginname;
+        String username;
         try {
             User user = (User) principal;
-            loginname = user.getUsername();
+            username = user.getUsername();
         }catch (ClassCastException e) {
-            loginname = null;
+        	username = null;
         }
-        return loginname;
+        return username;
     }
 
 }

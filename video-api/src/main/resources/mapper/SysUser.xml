@@ -8,7 +8,6 @@
 
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
-        <result column="loginname" jdbcType="VARCHAR" property="loginname" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="create_by" jdbcType="CHAR" property="createBy" />
@@ -17,7 +16,7 @@
         <result column="is_delete" jdbcType="TINYINT" property="delete" />
     </resultMap>
 
-    <select id="listByLoginname" parameterType="String" resultType="SysPermission">
+    <select id="listByUsername" parameterType="String" resultType="SysPermission">
         SELECT
             c.*
         FROM
@@ -30,19 +29,19 @@
             t.id = a.user_id
         AND a.role_id = b.role_id
         AND b.permission_id = c.id
-        AND t.loginname = #{loginname}
+        AND t.username = #{username}
         AND t.is_delete = 0
         AND d.is_delete = 0
         AND c.is_delete = 0
     </select>
 
-    <select id="findByLoginname" parameterType="String" resultMap="BaseResultMap">
+    <select id="findByUsername" parameterType="String" resultMap="BaseResultMap">
         SELECT
-            t.username,t.loginname,t.password
+            t.*
         FROM
             sys_user t
         WHERE
-            t.loginname = #{loginname}
+            t.username = #{username}
         AND t.is_delete = 0
     </select>
 
