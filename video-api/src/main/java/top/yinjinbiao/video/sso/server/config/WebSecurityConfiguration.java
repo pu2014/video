@@ -75,10 +75,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+        /*httpSecurity
                 .requestMatchers().anyRequest()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/**").permitAll();
+                .antMatchers("/oauth/**").permitAll();*/
     }
 }
