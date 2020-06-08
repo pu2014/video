@@ -21,4 +21,13 @@
 所有的代码并未经过实际测试，只是经过思考应该有哪些包。如果需要用此项目二次开发，需要根据自己的业务接入前端。再进行二次开发。biz中全为业务代码，如不需要可以直接删除。其它除5张基础表和oauth2表都可删除。
 
 ## 接口
-- 登录请求token POST http://localhost:81/video/oauth/token?grant_type=password&username=admin&password=123&client_id=client&client_secret=secret
+登录请求 token POST /video/oauth/token
+```json
+{
+	username:username.value,
+	password:txt_password.value,
+	grant_type:'password',
+	client_id:'client',
+	client_secret:'secret'
+}
+```

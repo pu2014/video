@@ -27,6 +27,8 @@
         <spring-security-oauth2.version>2.2.5.RELEASE</spring-security-oauth2.version>
         <lombok.version>1.18.12</lombok.version>
         <aliyun-sdk-oss.version>3.8.1</aliyun-sdk-oss.version>
+        <netty.version>4.1.50.Final</netty.version>
+        <common-lang3.version>3.10</common-lang3.version>
     </properties>
 
     <dependencyManagement>
@@ -98,7 +100,22 @@
                 <artifactId>aliyun-sdk-oss</artifactId>
                 <version>${aliyun-sdk-oss.version}</version>
             </dependency>
-
+            
+            <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+			<dependency>
+			    <groupId>io.netty</groupId>
+			    <artifactId>netty-all</artifactId>
+			    <version>${netty.version}</version>
+			</dependency>            
+			
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-lang3</artifactId>
+			    <version>${common-lang3.version}</version>
+			</dependency>
+			
+            
         </dependencies>
     </dependencyManagement>
 

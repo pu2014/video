@@ -17,9 +17,9 @@ public class SysFile extends BaseDomain {
 
 	private Long id;
 
-    private String name;
+    private String originalName;
 
-    private String key;
+    private String currentName;
 
     private String url;
 

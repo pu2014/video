@@ -15,6 +15,5 @@
   <modules>
   	<module>video-dependencies</module>
   	<module>video-api</module>
-	<module>video-generator</module>
   </modules>
 </project>

@@ -5,18 +5,18 @@
     <!--@mbg.generated-->
     <!--@Table sys_file-->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="CHAR" property="name" />
-    <result column="key" jdbcType="CHAR" property="key" />
-    <result column="url" jdbcType="CHAR" property="url" />
-    <result column="create_by" jdbcType="CHAR" property="createBy" />
+    <result column="original_name" jdbcType="VARCHAR" property="originalName" />
+    <result column="current_name" jdbcType="VARCHAR" property="currentName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_by" jdbcType="CHAR" property="updateBy" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="is_delete" jdbcType="BOOLEAN" property="delete" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, url, create_by, create_time, update_by, update_time, is_delete
+    id, original_name, current_name, url, create_by, create_time, update_by, update_time, is_delete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -32,22 +32,22 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="top.yinjinbiao.video.domain.SysFile" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into sys_file (`name`, `key`, url, create_by,
+    insert into sys_file (original_name, current_name, url, create_by,
       create_time, update_by, update_time, 
       is_delete)
-    values (#{name,jdbcType=CHAR}, #{key,jdbcType=CHAR}, #{url,jdbcType=CHAR}, #{createBy,jdbcType=BIGINT},
-      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+    values (#{originalName,jdbcType=VARCHAR}, #{currentName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{createBy,jdbcType=BIGINT},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{delete,jdbcType=BOOLEAN})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="top.yinjinbiao.video.domain.SysFile" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into sys_file
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
+      <if test="originalName != null">
+        original_name,
       </if>
-      <if test="key != null">
-        `key`,
+      <if test="currentName != null">
+        current_name,
       </if>
       <if test="url != null">
         url,
@@ -70,13 +70,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
-        #{name,jdbcType=CHAR},
+        #{originalName,jdbcType=VARCHAR},
       </if>
       <if test="key != null">
-        #{key,jdbcType=CHAR},
+        #{currentName,jdbcType=VARCHAR},
       </if>
       <if test="url != null">
-        #{url,jdbcType=CHAR},
+        #{url,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=BIGINT},
@@ -85,7 +85,7 @@
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateBy != null">
-        #{updateBy,jdbcType=INTEGER},
+        #{updateBy,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
@@ -100,13 +100,13 @@
     update sys_file
     <set>
       <if test="name != null">
-        `name` = #{name,jdbcType=CHAR},
+        original_name = #{originalName,jdbcType=VARCHAR},
       </if>
       <if test="key != null">
-        `key` = #{key,jdbcType=CHAR},
+        current_name = #{currentName,jdbcType=VARCHAR},
       </if>
       <if test="url != null">
-        url = #{url,jdbcType=CHAR},
+        url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=BIGINT},
@@ -115,7 +115,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateBy != null">
-        update_by = #{updateBy,jdbcType=INTEGER},
+        update_by = #{updateBy,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -129,18 +129,18 @@
   <update id="updateByPrimaryKey" parameterType="top.yinjinbiao.video.domain.SysFile">
     <!--@mbg.generated-->
     update sys_file
-    set `name` = #{name,jdbcType=CHAR},
-      `key` = #{key,jdbcType=CHAR},
-      url = #{url,jdbcType=CHAR},
+    set original_name = #{originalName,jdbcType=VARCHAR},
+      current_name = #{currentName,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
       create_by = #{createBy,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_by = #{updateBy,jdbcType=INTEGER},
+      update_by = #{updateBy,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       is_delete = #{delete,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <delete id="deleteByKey" parameterType="java.lang.String">
+  <delete id="deleteByCurrentName" parameterType="java.lang.String">
     delete from sys_file
-    where `key` = #{key,jdbcType=CHAR}
+    where current_name = #{currentName,jdbcType=VARCHAR}
   </delete>
 </mapper>
