@@ -30,7 +30,8 @@ spring:
 mybatis:
   type-aliases-package: top.yinjinbiao.video.domain
   mapper-locations: classpath:mapper/*.xml
-
+  
+# 阿里云对象存储地址
 oss:
   endpoint: http://oss-cn-beijing.aliyuncs.com
   bucketName: top-yinjinbiao-video

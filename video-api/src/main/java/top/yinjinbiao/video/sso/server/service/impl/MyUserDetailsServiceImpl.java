@@ -1,19 +1,20 @@
 package top.yinjinbiao.video.sso.server.service.impl;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import top.yinjinbiao.video.admin.service.SysUserService;
+import top.yinjinbiao.video.common.dto.VideoUser;
 import top.yinjinbiao.video.domain.SysPermission;
 import top.yinjinbiao.video.domain.SysUser;
-import top.yinjinbiao.video.admin.service.SysUserService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class MyUserDetailsServiceImpl implements UserDetailsService {
@@ -41,7 +42,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
         for (SysPermission sysPermission : sysPermissionList) {
             authorities.add(new SimpleGrantedAuthority(sysPermission.getCode()));
         }
-        return new User(sysUser.getUsername(),sysUser.getPassword(),authorities);
+        return new VideoUser(sysUser.getId(),sysUser.getNickname(),sysUser.getUsername(),sysUser.getPassword(),authorities);
     }
 }
 

@@ -37,6 +37,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     	for (SysPermission sysPermission : list) {
     		authorizeRequests.antMatchers(sysPermission.getUrl()).hasAnyAuthority(sysPermission.getCode());
 		}
+    	//只要登录就可以访问的请求，所有人都可以访问的请求，没必要再走配置化
+    	authorizeRequests.antMatchers("/profile/myinfo").authenticated();//个人信息接口
+    	authorizeRequests.antMatchers("/chat/**").authenticated();//聊天模块
+    	
     	authorizeRequests.anyRequest().permitAll()//其他没有限定的请求，允许随意访问
         .and().anonymous();//对于没有配置权限的其他请求允许匿名访问
     }

@@ -20,7 +20,7 @@
 ## 注意
 所有的代码并未经过实际测试，只是经过思考应该有哪些包。如果需要用此项目二次开发，需要根据自己的业务接入前端。再进行二次开发。biz中全为业务代码，如不需要可以直接删除。其它除5张基础表和oauth2表都可删除。
 
-## 接口
+## 基础接口
 登录请求 token POST /video/oauth/token
 ```json
 {
@@ -29,5 +29,32 @@
 	grant_type:'password',
 	client_id:'client',
 	client_secret:'secret'
+}
+```
+
+请求资源接口时，资源都配置了拦截，因此必须带token
+```
+headers:{
+	"Authorization":"Bearer "+token
+}
+```
+
+查询我的个人信息	GET：/profile/myinfo
+
+## 聊天模块接口
+我的好友	GET：/chat/myFriends	
+
+参考结果：
+```json
+{
+    "state": 200,
+    "message": "查询成功",
+    "data": [
+        {
+            "id": 2,
+            "nickname": "法海你不懂爱",
+            "username": "731509863"
+        }
+    ]
 }
 ```

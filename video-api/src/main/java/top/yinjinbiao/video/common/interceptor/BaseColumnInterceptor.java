@@ -50,7 +50,7 @@ public class BaseColumnInterceptor implements Interceptor {
                     // insert语句插入CreatedBy
                     field.setAccessible(true);
                     // 这里设置登陆人
-                    field.set(parameter, UserLocalUtil.getCurrentUsername());
+                    field.set(parameter, UserLocalUtil.getCurrentUserId());
                 }
             } else if (field.getAnnotation(UpdateBy.class) != null) {
 
@@ -58,7 +58,7 @@ public class BaseColumnInterceptor implements Interceptor {
                         || SqlCommandType.UPDATE.equals(sqlCommandType)) {
                     // insert 或update语句插入更新人
                     field.setAccessible(true);
-                    field.set(parameter, UserLocalUtil.getCurrentUsername());
+                    field.set(parameter, UserLocalUtil.getCurrentUserId());
                 }
             } else if (field.getAnnotation(Delete.class) != null) {
                 if(SqlCommandType.INSERT.equals(sqlCommandType)){

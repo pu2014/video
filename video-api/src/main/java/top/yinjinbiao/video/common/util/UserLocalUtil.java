@@ -1,7 +1,8 @@
 package top.yinjinbiao.video.common.util;
 
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+
+import top.yinjinbiao.video.common.dto.VideoUser;
 
 /**
  * @author yin.jinbiao
@@ -13,15 +14,40 @@ public class UserLocalUtil {
      * @return
      */
     public static String getCurrentUsername(){
+    	VideoUser currentUserDetails = getCurrentUserDetails();
+    	if(currentUserDetails==null){
+    		return null;    		
+    	}else{
+    		return currentUserDetails.getUsername();
+    	}
+    }
+    
+    /**
+     * 获取当前登陆人id，如果未登录返回null。
+     * @return
+     */
+    public static Long getCurrentUserId(){
+    	VideoUser currentUserDetails = getCurrentUserDetails();
+    	if(currentUserDetails==null){
+    		return null;    		
+    	}else{
+    		return currentUserDetails.getId();
+    	}
+    }
+    
+    /**
+     * 获取当前登陆人
+     * @return
+     */
+    public static VideoUser getCurrentUserDetails(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username;
-        try {
-            User user = (User) principal;
-            username = user.getUsername();
+        VideoUser user;
+        try{
+        	user = (VideoUser) principal;
         }catch (ClassCastException e) {
-        	username = null;
+        	user = null;
         }
-        return username;
+        return user;
     }
 
 }

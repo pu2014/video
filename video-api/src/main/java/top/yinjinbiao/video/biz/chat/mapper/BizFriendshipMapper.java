@@ -1,6 +1,9 @@
 package top.yinjinbiao.video.biz.chat.mapper;
 
+import java.util.List;
+
 import top.yinjinbiao.video.domain.BizFriendship;
+import top.yinjinbiao.video.domain.SysUser;
 
 public interface BizFriendshipMapper {
 
@@ -20,4 +23,7 @@ public interface BizFriendshipMapper {
 
 
     int updateByPrimaryKey(BizFriendship record);
+
+
+	List<SysUser> findMyFriendsById(Long id);
 }
