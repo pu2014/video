@@ -1,10 +1,8 @@
-package top.yinjinbiao.video;
+package top.yinjinbiao.video.netty;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
-import top.yinjinbiao.video.netty.WSServer;
 
 @Component
 public class NettyBooter implements ApplicationListener<ContextRefreshedEvent>{
