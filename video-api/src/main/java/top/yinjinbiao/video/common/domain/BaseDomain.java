@@ -21,10 +21,10 @@ public class BaseDomain implements Serializable {
     private Date updateTime;
 
     @CreateBy
-    private String createBy;
+    private Long createBy;
 
     @UpdateBy
-    private String updateBy;
+    private Long updateBy;
 
     @Delete
     private Boolean delete;

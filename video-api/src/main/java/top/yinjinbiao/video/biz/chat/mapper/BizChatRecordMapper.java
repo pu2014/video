@@ -1,5 +1,7 @@
 package top.yinjinbiao.video.biz.chat.mapper;
 
+import java.util.List;
+
 import top.yinjinbiao.video.domain.BizChatRecord;
 
 public interface BizChatRecordMapper {
@@ -15,4 +17,6 @@ public interface BizChatRecordMapper {
     int updateByPrimaryKeySelective(BizChatRecord record);
 
     int updateByPrimaryKey(BizChatRecord record);
+
+	void updateMsgSignedById(List<Long> msgIdList);
 }
