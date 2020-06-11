@@ -40,11 +40,11 @@ public class UserLocalUtil {
      * @return
      */
     public static VideoUser getCurrentUserDetails(){
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         VideoUser user;
         try{
+        	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         	user = (VideoUser) principal;
-        }catch (ClassCastException e) {
+        }catch (Exception e) {
         	user = null;
         }
         return user;

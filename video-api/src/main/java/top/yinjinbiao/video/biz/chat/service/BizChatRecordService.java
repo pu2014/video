@@ -19,4 +19,11 @@ public interface BizChatRecordService {
 	 */
 	void updateMsgSigned(List<Long> msgIdList);
 
+	/**
+	 * 查询当前用户未读消息
+	 * @param currentUserId
+	 * @return
+	 */
+	List<BizChatRecord> listUnReadChatRecord(Long acceptUserId);
+
 }

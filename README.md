@@ -42,7 +42,7 @@ headers:{
 查询我的个人信息	GET：/profile/myinfo
 
 ## 聊天模块接口
-我的好友	GET：/chat/myFriends	
+查询我的好友	GET：/chat/myFriends	
 
 参考结果：
 ```json
@@ -58,3 +58,8 @@ headers:{
     ]
 }
 ```
+
+查询未读消息 GET: /chat/getUnReadMsgList
+
+查询好友申请GET: /chat/queryFriendRequests
+

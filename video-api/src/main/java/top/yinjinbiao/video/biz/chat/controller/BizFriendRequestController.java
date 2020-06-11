@@ -8,22 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import top.yinjinbiao.video.biz.chat.service.BizChatRecordService;
+import top.yinjinbiao.video.biz.chat.service.BizFriendRequestService;
 import top.yinjinbiao.video.common.dto.ResponseResult;
 import top.yinjinbiao.video.common.util.UserLocalUtil;
-import top.yinjinbiao.video.domain.BizChatRecord;
+import top.yinjinbiao.video.domain.BizFriendRequest;
 
 @RestController
 @RequestMapping("/chat")
-public class BizChatRecordController {
-	
-	@Autowired
-	private BizChatRecordService bizChatRecordService;
-	
-	@GetMapping("/getUnReadMsgList")
-	public ResponseResult<List<BizChatRecord>> unReadMsgList(){
-		return new ResponseResult<>(HttpStatus.OK.value(),bizChatRecordService.listUnReadChatRecord(UserLocalUtil.getCurrentUserId()));
-		
-	}
+public class BizFriendRequestController {
 
+	@Autowired
+	private BizFriendRequestService bizFriendRequestService;
+	
+	@GetMapping("/queryFriendRequests")
+	public ResponseResult<List<BizFriendRequest>> queryFriendRequests(){
+		return new ResponseResult<>(HttpStatus.OK.value(),bizFriendRequestService.queryFriendRequests(UserLocalUtil.getCurrentUserId()));
+	}
 }

@@ -1,5 +1,7 @@
 package top.yinjinbiao.video.biz.chat.mapper;
 
+import java.util.List;
+
 import top.yinjinbiao.video.domain.BizFriendRequest;
 
 public interface BizFriendRequestMapper {
@@ -20,4 +22,7 @@ public interface BizFriendRequestMapper {
 
 
     int updateByPrimaryKey(BizFriendRequest record);
+
+
+	List<BizFriendRequest> selectByAcceptUserId(Long acceptUserId);
 }

@@ -38,7 +38,6 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) 
 			throws Exception {
-		System.out.println("read..........");
 		// 获取客户端传输过来的消息
 		String content = msg.text();
 		
@@ -54,12 +53,6 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			// 	2.1  当websocket 第一次open的时候，初始化channel，把用的channel和userid关联起来
 			Long senderId = dataContent.getChatMsg().getSenderId();
 			userChannelRel.put(senderId, currentChannel);
-			
-			// 测试
-			for (Channel c : users) {
-				System.out.println(c.id().asLongText());
-			}
-			userChannelRel.toString();
 		} else if (action == ChatMsgActionEnum.CHAT.type()) {
 			//  2.2  聊天类型的消息，把聊天记录保存到数据库，同时标记消息的签收状态[未签收]
 			ChatMsg chatMsg = dataContent.getChatMsg();
@@ -124,7 +117,6 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 	 */
 	@Override
 	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-		System.out.println("add.....");
 		String channelId = ctx.channel().id().asShortText();
 		System.out.println("客户端添加，channelId为：" + channelId);
 		users.add(ctx.channel());
@@ -134,11 +126,9 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 	 * 客户端移除的处理
 	 */
 	@Override
-	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-		
+	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {		
 		String channelId = ctx.channel().id().asShortText();
-		System.out.println("客户端被移除，channelId为：" + channelId);
-		
+		System.out.println("客户端被移除，channelId为：" + channelId);		
 		// 当触发handlerRemoved，ChannelGroup会自动移除对应客户端的channel
 		users.remove(ctx.channel());
 	}

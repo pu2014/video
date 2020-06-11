@@ -18,5 +18,16 @@ public interface BizChatRecordMapper {
 
     int updateByPrimaryKey(BizChatRecord record);
 
+    /**
+     * 批量设置消息为已读
+     * @param msgIdList
+     */
 	void updateMsgSignedById(List<Long> msgIdList);
+
+	/**
+	 * 根据当前登陆人查询未读消息
+	 * @param currentUserId
+	 * @return
+	 */
+	List<BizChatRecord> listUnReadChatRecord(Long acceptUserId);
 }

@@ -13,17 +13,22 @@ import top.yinjinbiao.video.domain.BizChatRecord;
 public class BizChatRecordServiceImpl implements BizChatRecordService {
 	
 	@Autowired
-	private BizChatRecordMapper bizChatMapper;
-
+	private BizChatRecordMapper bizChatRecordMapper;
+	
 	@Override
 	public Long save(BizChatRecord record) {
-		bizChatMapper.insert(record);
+		bizChatRecordMapper.insert(record);
 		return record.getId();
 	}
 
 	@Override
 	public void updateMsgSigned(List<Long> msgIdList) {
-		bizChatMapper.updateMsgSignedById(msgIdList);	
+		bizChatRecordMapper.updateMsgSignedById(msgIdList);	
+	}
+
+	@Override
+	public List<BizChatRecord> listUnReadChatRecord(Long acceptUserId) {
+		return bizChatRecordMapper.listUnReadChatRecord(acceptUserId);
 	}
 
 }
