@@ -126,10 +126,28 @@
       `is_delete` = #{delete,jdbcType=BIT}
     where `id` = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByAcceptUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from biz_friend_request
-    where accept_user_id = #{acceptUserId,jdbcType=BIGINT}
+  <select id="findByAcceptUserId" parameterType="java.lang.Long" resultType="SysUserVO">
+	SELECT
+		a.id,
+		a.nickname,
+		a.username
+	FROM
+		biz_friend_request t,
+		sys_user a
+	WHERE
+		t.send_user_id = a.id
+	AND t.accept_user_id = #{acceptUserId,jdbcType=BIGINT}
+	AND t.is_delete = 0
+	AND a.is_delete = 0
   </select>
+  <select id="findBySendUserIdAndAcceptUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	    SELECT
+			 <include refid="Base_Column_List" />
+		FROM
+			biz_friend_request
+		WHERE
+			send_user_id = #{sendUserId,jdbcType=BIGINT}
+		AND accept_user_id = #{acceptUserId,jdbcType=BIGINT}
+		AND is_delete = 0
+  </select> 
 </mapper>

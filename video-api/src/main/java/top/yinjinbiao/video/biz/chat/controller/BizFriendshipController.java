@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import top.yinjinbiao.video.biz.chat.service.BizFriendshipService;
 import top.yinjinbiao.video.common.dto.ResponseResult;
 import top.yinjinbiao.video.common.util.UserLocalUtil;
-import top.yinjinbiao.video.domain.SysUser;
+import top.yinjinbiao.video.domain.vo.SysUserVO;
 
 @RestController
 @RequestMapping("/chat")
@@ -20,11 +20,15 @@ public class BizFriendshipController {
 	@Autowired
 	private BizFriendshipService bizFriendshipService;
 	
+	/**
+	 * 查询我的好友列表
+	 * @return
+	 */
 	@GetMapping("/myFriends")
-	public ResponseResult<List<SysUser>> myFriends(){
+	public ResponseResult<List<SysUserVO>> myFriends(){
 		Long userId = UserLocalUtil.getCurrentUserDetails().getId();//当前登陆人id
-		List<SysUser> myFriendList = bizFriendshipService.findMyFriendsById(userId);
-		return new ResponseResult<List<SysUser>>(HttpStatus.OK.value(),"查询成功",myFriendList);
+		List<SysUserVO> myFriendList = bizFriendshipService.findMyFriendsById(userId);
+		return new ResponseResult<>(HttpStatus.OK.value(),"查询成功",myFriendList);
 	}
-
+	
 }

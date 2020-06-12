@@ -2,7 +2,10 @@ package top.yinjinbiao.video.biz.chat.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import top.yinjinbiao.video.domain.BizFriendRequest;
+import top.yinjinbiao.video.domain.vo.SysUserVO;
 
 public interface BizFriendRequestMapper {
 
@@ -24,5 +27,8 @@ public interface BizFriendRequestMapper {
     int updateByPrimaryKey(BizFriendRequest record);
 
 
-	List<BizFriendRequest> selectByAcceptUserId(Long acceptUserId);
+	List<SysUserVO> findByAcceptUserId(Long acceptUserId);
+
+
+	BizFriendRequest findBySendUserIdAndAcceptUserId(@Param("sendUserId")Long sendUserId,@Param("acceptUserId") Long acceptUserId);
 }

@@ -20,4 +20,10 @@ public interface SysUserService {
      * @return
      */
     SysUser findByUsername(String username);
+    
+    /**
+     * 根据id查询用户
+     * @return
+     */
+    SysUser findByUserId(Long id);
 }

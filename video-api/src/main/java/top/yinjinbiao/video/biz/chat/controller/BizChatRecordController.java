@@ -20,6 +20,10 @@ public class BizChatRecordController {
 	@Autowired
 	private BizChatRecordService bizChatRecordService;
 	
+	/**
+	 * 查询未读消息
+	 * @return
+	 */
 	@GetMapping("/getUnReadMsgList")
 	public ResponseResult<List<BizChatRecord>> unReadMsgList(){
 		return new ResponseResult<>(HttpStatus.OK.value(),bizChatRecordService.listUnReadChatRecord(UserLocalUtil.getCurrentUserId()));

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import top.yinjinbiao.video.biz.chat.mapper.BizFriendshipMapper;
 import top.yinjinbiao.video.biz.chat.service.BizFriendshipService;
-import top.yinjinbiao.video.domain.SysUser;
+import top.yinjinbiao.video.domain.vo.SysUserVO;
 
 @Service
 public class BizFriendshipServiceImpl implements BizFriendshipService {
@@ -15,9 +15,8 @@ public class BizFriendshipServiceImpl implements BizFriendshipService {
 	@Autowired
 	private BizFriendshipMapper bizFriendshipMapper;
 	
-	public List<SysUser> findMyFriendsById(Long id){
+	public List<SysUserVO> findMyFriendsById(Long id){
 		return bizFriendshipMapper.findMyFriendsById(id);
 	}
 
-	
 }

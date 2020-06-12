@@ -155,4 +155,14 @@
 	AND a.id = #{id,jdbcType=BIGINT}
 	AND a.is_delete = 0;
   </select>
+  <select id="findBySendUserIdAndAcceptUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+		*
+	FROM
+		biz_friendship
+	WHERE
+		my_user_id = #{myUserId,jdbcType=BIGINT}
+	AND friend_user_id = #{friendUserId,jdbcType=BIGINT}
+	AND is_delete = 0;
+  </select> 
 </mapper>

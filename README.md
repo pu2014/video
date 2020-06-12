@@ -44,22 +44,26 @@ headers:{
 ## 聊天模块接口
 查询我的好友	GET：/chat/myFriends	
 
-参考结果：
-```json
-{
-    "state": 200,
-    "message": "查询成功",
-    "data": [
-        {
-            "id": 2,
-            "nickname": "法海你不懂爱",
-            "username": "731509863"
-        }
-    ]
-}
-```
-
 查询未读消息 GET: /chat/getUnReadMsgList
 
 查询好友申请GET: /chat/queryFriendRequests
+
+查找 GET : /chat/search?friendUsername=
+
+发送好友申请POST: /chat/addFriendRequest
+```json
+{
+	"friendUserId":
+}
+```
+
+收到申请，做出回应POST: /chat/operateFriendRequest
+```json
+operateType=0是拒绝，operateType=1是接受
+friendUserId是好友的主键id
+{
+	friendUserId:friendUserId,
+	operateType:operateType
+}
+```
 
