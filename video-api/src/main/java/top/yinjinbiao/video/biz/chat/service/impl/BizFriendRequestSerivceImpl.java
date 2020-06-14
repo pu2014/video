@@ -63,7 +63,7 @@ public class BizFriendRequestSerivceImpl implements BizFriendRequestService {
 
 	@Override
 	@Transactional
-	public List<SysUserVO> operateFriendRequest(Long myUserId, Long friendUserId, Integer operateType) {
+	public List<SysUserVO> operateFriendRequest(Long myUserId, Long friendUserId, int operateType) {
 		//首先，查询别人是不是想加你。如果不想加你，你想操作就是想屁吃。
 		BizFriendRequest oldFriendRequest = bizFriendRequestMapper.findBySendUserIdAndAcceptUserId(friendUserId, myUserId);
 		if(oldFriendRequest!=null){

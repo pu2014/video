@@ -28,6 +28,6 @@ public interface BizFriendRequestService {
 	 * @param operateType
 	 * @return
 	 */
-	List<SysUserVO> operateFriendRequest(Long myUserId, Long friendUserId, Integer operateType);
+	List<SysUserVO> operateFriendRequest(Long myUserId, Long friendUserId, int operateType);
 
 }

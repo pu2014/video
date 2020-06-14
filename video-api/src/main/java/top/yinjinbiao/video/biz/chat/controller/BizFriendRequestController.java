@@ -60,7 +60,7 @@ public class BizFriendRequestController {
 	public ResponseResult<SysUserVO> friendRequest(Long friendUserId){
 		Long myUserId = UserLocalUtil.getCurrentUserDetails().getId();//当前登陆人id
 		// 如果的好友申请是我本人，直接返回错误信息。
-		if(myUserId==friendUserId){
+		if(myUserId.equals(friendUserId)){
 			return new ResponseResult<>(HttpStatus.BAD_REQUEST.value(), "不能添加自己为好友！", null);
 		}
 		int status = bizFriendRequestService.saveFriendRequest(myUserId,friendUserId);		
