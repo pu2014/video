@@ -152,10 +152,10 @@
 		biz_friendship a
 	WHERE
 		t.id = a.friend_user_id
-	AND a.id = #{id,jdbcType=BIGINT}
+	AND a.my_user_id = #{id,jdbcType=BIGINT}
 	AND a.is_delete = 0;
   </select>
-  <select id="findBySendUserIdAndAcceptUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="findByMyUserIdAndFriendUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     SELECT
 		*
 	FROM

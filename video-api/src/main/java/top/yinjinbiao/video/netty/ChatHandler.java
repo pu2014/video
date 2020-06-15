@@ -96,10 +96,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				if (StringUtils.isNotBlank(mid)) {
 					msgIdList.add(Long.parseLong(mid));
 				}
-			}
-			
-			System.out.println(msgIdList.toString());
-			
+			}			
 			if (msgIdList != null && !msgIdList.isEmpty() && msgIdList.size() > 0) {
 				// 批量签收
 				chatRecordService.updateMsgSigned(msgIdList);
@@ -120,6 +117,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 		String channelId = ctx.channel().id().asShortText();
 		System.out.println("客户端添加，channelId为：" + channelId);
 		users.add(ctx.channel());
+		System.out.println(users.toString());
+		System.out.println(userChannelRel.toString());
 	}
 
 	/**
@@ -131,6 +130,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 		System.out.println("客户端被移除，channelId为：" + channelId);		
 		// 当触发handlerRemoved，ChannelGroup会自动移除对应客户端的channel
 		users.remove(ctx.channel());
+		System.out.println(users.toString());
+		System.out.println(userChannelRel.toString());
 	}
 
 	/**
