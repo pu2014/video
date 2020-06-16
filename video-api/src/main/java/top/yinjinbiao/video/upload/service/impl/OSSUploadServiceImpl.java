@@ -18,7 +18,6 @@ import java.util.UUID;
  * 文件上传-OSS 服务
  */
 @Service
-@Transactional(readOnly = true)
 public class OSSUploadServiceImpl implements UploadService {
 
 
@@ -43,7 +42,7 @@ public class OSSUploadServiceImpl implements UploadService {
     private SysFileMapper sysFileMapper;
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional
     public String upload(String originalFilename, byte[] data) {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         if (!ossClient.doesBucketExist(bucketName)) {
@@ -66,7 +65,7 @@ public class OSSUploadServiceImpl implements UploadService {
     }
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional
     public int delete(String key) {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         ossClient.deleteObject(bucketName, key);

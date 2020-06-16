@@ -20,5 +20,5 @@ public class SysUser extends BaseDomain {
 	private String nickname;
     private String username;
     private String password;
-    
+    private String faceImg;
 }

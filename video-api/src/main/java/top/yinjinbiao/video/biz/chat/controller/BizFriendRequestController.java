@@ -48,7 +48,7 @@ public class BizFriendRequestController {
 		if(sysUser==null){
 			return new ResponseResult<>(HttpStatus.BAD_REQUEST.value(),"该用户不存在!");
 		}else{
-			return new ResponseResult<>(HttpStatus.OK.value(),"查询成功",new SysUserVO(sysUser.getId(),sysUser.getNickname(),sysUser.getUsername()));			
+			return new ResponseResult<>(HttpStatus.OK.value(),"查询成功",new SysUserVO(sysUser.getId(),sysUser.getNickname(),sysUser.getUsername(),sysUser.getFaceImg()));			
 		}
 	}
 	

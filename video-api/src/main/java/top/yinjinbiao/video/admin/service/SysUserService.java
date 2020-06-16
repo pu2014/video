@@ -2,8 +2,11 @@ package top.yinjinbiao.video.admin.service;
 
 import top.yinjinbiao.video.domain.SysPermission;
 import top.yinjinbiao.video.domain.SysUser;
+import top.yinjinbiao.video.domain.vo.SysUserVO;
 
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public interface SysUserService {
 
@@ -26,4 +29,10 @@ public interface SysUserService {
      * @return
      */
     SysUser findByUserId(Long id);
+
+    /**
+     * 上传头像
+     * @param file
+     */
+    SysUserVO uploadFaceImg(Long id,MultipartFile file);
 }

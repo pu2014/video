@@ -146,7 +146,8 @@
     SELECT
 		t.id,
 		t.nickname,
-		t.username
+		t.username,
+		t.face_img
 	FROM
 		sys_user t,
 		biz_friendship a
