@@ -130,7 +130,8 @@
 	SELECT
 		a.id,
 		a.nickname,
-		a.username
+		a.username,
+		a.face_img
 	FROM
 		biz_friend_request t,
 		sys_user a

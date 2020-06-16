@@ -31,7 +31,6 @@
 	client_secret:'secret'
 }
 ```
-
 请求资源接口时，资源都配置了拦截，因此必须带token
 ```
 headers:{
@@ -40,6 +39,8 @@ headers:{
 ```
 
 查询我的个人信息	GET：/profile/myinfo
+
+上传头像 POST: /profile/uploadFaceImg
 
 ## 聊天模块接口
 查询我的好友	GET：/chat/myFriends	
